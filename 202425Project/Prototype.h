@@ -2,6 +2,7 @@
 #include <fstream>
 #include <string>
 #include <vector>
+#include <unordered_set>
 
 //#define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
@@ -20,7 +21,7 @@
 class Prototype {
 	//insert data structures here:
 	std::vector<std::string> cityNames;
-	std::vector<std::string> usedCityNames;
+	std::unordered_set<std::string> usedCityNames;
 public:
 	//insert methods here:
 
@@ -43,24 +44,30 @@ public:
 	// Accpets a character and returns a city begining with that character.
 	// Doesn't return used cities
 	std::string getCity(char letter){
-		return "city name";
+		for (std::string& city : cityNames) {
+			if (!city.empty() && city[0] == letter && checkCity(city))
+			{
+				return city;
+			}
+		}
+		return "";
 	}
 	
-	// Accepts a city as a string and return true if a valid, only unused city is passed.
+	// Accepts a city as a string and return true if a valid, unused city is passed.
 	bool checkCity(std::string cityName) {
-		return false;
+		return usedCityNames.find(cityName) == usedCityNames.end();
 	}
 
 	// Accepts a city as a string and marks it as used. checkcity no longer accepts as valid.
 	void markUsed(std::string cityName) {
 		if (checkCity(cityName)) {
-			usedCityNames.push_back(cityName);
+			usedCityNames.insert(cityName);
 		}
 	}
 
 	// Restarts the game.
 	void restart() {
-
+		usedCityNames.clear();
 	}
 };
 
