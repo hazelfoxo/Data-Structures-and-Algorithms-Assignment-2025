@@ -8,15 +8,15 @@
 //#define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
 /*
-*	
+*
 *	INSERT TIME COMPLEXITIES HERE:
-* 
+*
 *	Constructor:		______
-*	getCity:			______
-*	checkCity:			______
-*	markUsed:			______
-*	restart:			______
-* 
+*	getCity:			O(n)
+*	checkCity:			O(log n), O(n)
+*	markUsed:			O(n)
+*	restart:			O(n)
+*
 */
 
 class Prototype {
@@ -27,7 +27,7 @@ public:
 	//insert methods here:
 
 	// Constructor
-	// Accepts name of file as string, reads file and populates interal data structures.
+	// Accepts name of file as string, reads file and populates internal data structures.
 
 	// Sorts vector so we can use binary search later
 	Prototype(std::string fileName) {
@@ -45,9 +45,9 @@ public:
 		return lines;
 	}
 
-	// Accpets a character and returns a city begining with that character.
+	// Accepts a character and returns a city beginning with that character.
 	// Doesn't return used cities
-	// 
+	//
 	// Linear search on vector
 	std::string getCity(char letter){
 		for (std::string& city : cityNames) {
@@ -58,19 +58,19 @@ public:
 		}
 		return "";
 	}
-	
+
 	// Accepts a city as a string and return true if a valid, unused city is passed
-	// 
+	//
 	// Binary search on sorted vector and hash lookup on unordered
 
 	bool checkCity(std::string cityName) {
 		if (std::binary_search(cityNames.begin(), cityNames.end(), cityName)) {
-			return usedCityNames.find(cityName) == usedCityNames.end();
+			return usedCityNames.contains(cityName);
 		}
 		return false;
 	}
 
-	// Accepts a city as a string and marks it as used. checkcity no longer accepts as valid.
+	// Accepts a city as a string and marks it as used. checkCity no longer accepts as valid.
 	//
 	// Same complexity as checkCity
 	void markUsed(std::string cityName) {
@@ -84,4 +84,3 @@ public:
 		usedCityNames.clear();
 	}
 };
-
