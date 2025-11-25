@@ -65,7 +65,7 @@ public:
 
 	bool checkCity(std::string cityName) {
 		if (std::binary_search(cityNames.begin(), cityNames.end(), cityName)) {
-			return usedCityNames.find(cityName) == usedCityNames.end();
+			return !usedCityNames.contains(cityName);
 		}
 		return false;
 	}
