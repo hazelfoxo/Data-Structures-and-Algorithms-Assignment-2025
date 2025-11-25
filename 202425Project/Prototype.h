@@ -27,7 +27,7 @@ public:
 	//insert methods here:
 
 	// Constructor
-	// Accepts name of file as string, reads file and populates internal data structures.
+	// Accepts name of file as string, reads file and populates interal data structures.
 
 	// Sorts vector so we can use binary search later
 	Prototype(std::string fileName) {
@@ -35,7 +35,7 @@ public:
 		std::sort(cityNames.begin(), cityNames.end());
 	}
 
-	static std::vector<std::string> readFile(std::string &fileName) {
+	static std::vector<std::string> readFile(std::string& fileName) {
 		std::ifstream ifs(fileName);
 		std::string line;
 		std::vector<std::string> lines;
@@ -45,11 +45,11 @@ public:
 		return lines;
 	}
 
-	// Accepts a character and returns a city beginning with that character.
+	// Accpets a character and returns a city begining with that character.
 	// Doesn't return used cities
-	//
+	// 
 	// Linear search on vector
-	std::string getCity(char letter){
+	std::string getCity(char letter) {
 		for (std::string& city : cityNames) {
 			if (!city.empty() && city[0] == letter && checkCity(city))
 			{
@@ -60,17 +60,17 @@ public:
 	}
 
 	// Accepts a city as a string and return true if a valid, unused city is passed
-	//
+	// 
 	// Binary search on sorted vector and hash lookup on unordered
 
 	bool checkCity(std::string cityName) {
 		if (std::binary_search(cityNames.begin(), cityNames.end(), cityName)) {
-			return usedCityNames.contains(cityName);
+			return usedCityNames.find(cityName) == usedCityNames.end();
 		}
 		return false;
 	}
 
-	// Accepts a city as a string and marks it as used. checkCity no longer accepts as valid.
+	// Accepts a city as a string and marks it as used. checkcity no longer accepts as valid.
 	//
 	// Same complexity as checkCity
 	void markUsed(std::string cityName) {
