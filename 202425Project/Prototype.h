@@ -27,7 +27,7 @@ public:
 	//insert methods here:
 
 	// Constructor
-	// Accepts name of file as string, reads file and populates interal data structures.
+	// Accepts name of file as string, reads file and populates internal data structures.
 
 	// Sorts vector so we can use binary search later
 	Prototype(std::string fileName) {
