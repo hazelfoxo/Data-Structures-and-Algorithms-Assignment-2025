@@ -11,7 +11,7 @@
 *
 *	INSERT TIME COMPLEXITIES HERE:
 *
-*	Constructor:		______
+*	Constructor:		O(n)
 *	getCity:			O(n)
 *	checkCity:			O(log n), O(n)
 *	markUsed:			O(n)
