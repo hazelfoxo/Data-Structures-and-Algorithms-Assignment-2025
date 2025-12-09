@@ -14,7 +14,7 @@
 *	getCity:			O(n)
 *	checkCity:			O(log n), O(n)
 *	markUsed:			O(n)
-*	restart:wel			O(n)
+*	restart:			O(n)
 *
 */
 
