@@ -4,8 +4,7 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
-
-//#define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
+#define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
 /*
 *
@@ -83,4 +82,5 @@ public:
 	void restart() {
 		usedCityNames.clear();
 	}
+
 };

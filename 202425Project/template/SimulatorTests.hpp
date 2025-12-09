@@ -217,7 +217,7 @@ bool checkBatchConsistency(std::list<std::string>& messages) {
 		messages.push_back("getResults() does not return the result of all batch simulations");
 		return false;
 	}
-	for(size_t i=0; i< sims; ++i)
+	for(size_t i=0; i< sims/2; ++i)
 		if (results[i] != results[i + sims/2]) {
 			messages.push_back("Batch simulations are not reproducible");
 			break;
