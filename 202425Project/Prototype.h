@@ -22,6 +22,7 @@ class Prototype {
 	//insert data structures here:
 	std::vector<std::string> cityNames;
 	std::unordered_set<std::string> usedCityNames;
+	int seedInt = 0;
 public:
 	//insert methods here:
 
@@ -81,6 +82,12 @@ public:
 	// Restarts the game.
 	void restart() {
 		usedCityNames.clear();
+	}
+
+
+	// Allows a seed to be used that controls randomness in the game.
+	void seed(int gSeedInt) {
+		seedInt = gSeedInt;
 	}
 
 };
