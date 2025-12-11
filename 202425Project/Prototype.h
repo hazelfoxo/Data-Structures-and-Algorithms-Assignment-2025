@@ -52,15 +52,20 @@ public:
 	// 
 	// Linear search on vector
 	std::string getCity(char letter) {
+		std::vector<std::string> cityNamesSubset;
 
 		for (std::string& city : cityNames) {
 			if (!city.empty() && city[0] == letter && checkCity(city))
 			{
-
-				return city;
+				cityNamesSubset.push_back(city);
 			}
 		}
-
+		
+		// Pick city starting with that letter
+		if (!cityNamesSubset.empty()) {
+			int index = nextInt(0, static_cast<int>(cityNamesSubset.size()) - 1);
+			return cityNamesSubset[index];
+		}
 		return "";
 	}
 
