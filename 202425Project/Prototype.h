@@ -61,6 +61,7 @@ public:
 			{
 				cityNamesSubset.push_back(city);
 			}
+			if (city[0] > letter) break;
 		}
 		
 		// Pick city starting with that letter
