@@ -4,6 +4,7 @@
 #include <vector>
 #include <unordered_set>
 #include <algorithm>
+#include <random>
 #define ASSIGNMENT_2		//Uncomment to switch to feedback mode for assignment 2
 
 /*
@@ -22,7 +23,7 @@ class Prototype {
 	//insert data structures here:
 	std::vector<std::string> cityNames;
 	std::unordered_set<std::string> usedCityNames;
-	int seedInt = 0;
+	std::mt19937 random;
 public:
 	//insert methods here:
 
@@ -33,6 +34,7 @@ public:
 	Prototype(std::string fileName) {
 		cityNames = readFile(fileName);
 		std::sort(cityNames.begin(), cityNames.end());
+		
 	}
 
 	static std::vector<std::string> readFile(std::string& fileName) {
@@ -50,12 +52,15 @@ public:
 	// 
 	// Linear search on vector
 	std::string getCity(char letter) {
+
 		for (std::string& city : cityNames) {
 			if (!city.empty() && city[0] == letter && checkCity(city))
 			{
+
 				return city;
 			}
 		}
+
 		return "";
 	}
 
@@ -87,7 +92,13 @@ public:
 
 	// Allows a seed to be used that controls randomness in the game.
 	void seed(int gSeedInt) {
-		seedInt = gSeedInt;
+		random.seed(gSeedInt);
 	}
+
+	int nextInt(int min, int max) {
+		std::uniform_int_distribution<int> dist(min, max);
+		return dist(random);
+	}
+
 
 };
