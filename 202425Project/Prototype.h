@@ -36,7 +36,6 @@ public:
 		std::sort(cityNames.begin(), cityNames.end());
 		std::random_device rd;
 		random.seed(rd());
-
 	}
 
 	static std::vector<std::string> readFile(std::string& fileName) {
