@@ -24,6 +24,7 @@ class Prototype {
 	std::vector<std::string> cityNames;
 	std::unordered_set<std::string> usedCityNames;
 	std::mt19937 random;
+
 public:
 	//insert methods here:
 
@@ -35,7 +36,7 @@ public:
 		cityNames = readFile(fileName);
 		std::sort(cityNames.begin(), cityNames.end());
 		std::random_device rd;
-		random.seed(rd());
+		seed(rd());
 	}
 
 	static std::vector<std::string> readFile(std::string& fileName) {
@@ -46,6 +47,7 @@ public:
 			lines.push_back(line);
 		}
 		return lines;
+
 	}
 
 	// Accpets a character and returns a city begining with that character.
@@ -106,6 +108,5 @@ public:
 		std::uniform_int_distribution<int> dist(min, max);
 		return dist(random);
 	}
-
 
 };
