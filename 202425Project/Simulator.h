@@ -2,6 +2,7 @@
 
 #include "Prototype.h"
 #include <string>
+#include <iostream>
 
 class Simulator
 {
@@ -13,13 +14,18 @@ public:
 		game.seed(seed);
 		std::list<std::string> currentSimulation;
 		while (true) {
-			std::string city = game.getCity(start);
-			if (city.empty()) break;        
-			game.markUsed(city);             
-			currentSimulation.push_back(city);
-			
+			std::string cityName = game.getCity(start);
+			if (!cityName.empty()) {
+				game.markUsed(cityName);
+				start = (char) cityName.back();
+				currentSimulation.push_back(cityName);
+			}
+			else {
+				break;
+			}
 		}
-		if (!currentSimulation.empty()) simulationLog.push_back(currentSimulation);
+
+		simulationLog.push_back(currentSimulation);
 		return currentSimulation;
 	}
 
