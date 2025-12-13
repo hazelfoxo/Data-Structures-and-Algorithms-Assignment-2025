@@ -3,6 +3,7 @@
 #include "Prototype.h"
 #include <string>
 #include <iostream>
+#include <chrono>
 
 class Simulator
 {
@@ -32,13 +33,23 @@ public:
 	// runs k simulations of game and return a double counting the time to run the batch in seconds. 
 	// Results should be stored internally in a vector list of strings
 	double batch(std::string file, int k, int seed) {
+
 		Prototype game(file);
 		game.seed(seed);
-		std::list<std::string> currentSimulation;
 
+		std::chrono::steady_clock::time_point t = std::chrono::steady_clock::now();
 
-		simulationLog.push_back(currentSimulation);
-		return 0; // Placeholder return statement
+		std::vector<std::list<std::string>> currentSimulation;
+		for (int i = 0; i <= k; i++) {
+			char startingChar = 'a' + (char)game.nextInt(0,25);
+			std::cout << startingChar;
+			currentSimulation.push_back(run(file, startingChar, seed));
+		}
+		std::cout << std::endl;
+
+		std::chrono::steady_clock::duration elapsed = std::chrono::steady_clock::now() - t;
+
+		return std::chrono::duration_cast<std::chrono::nanoseconds>(elapsed).count();
 	}
 
 	//This returns a vector with all simulation results executed so far. Each simulation should be reprensented as a list of strings.
