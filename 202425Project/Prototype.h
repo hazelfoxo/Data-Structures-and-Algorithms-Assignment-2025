@@ -54,6 +54,8 @@ public:
 	// Doesn't return used cities
 	// 
 	// Linear search on vector
+
+	// Optimise this: Remove linear search
 	std::string getCity(char letter) {
 		std::vector<std::string> cityNamesSubset;
 
