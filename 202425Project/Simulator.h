@@ -42,10 +42,9 @@ public:
 
 		std::chrono::steady_clock::time_point t = std::chrono::steady_clock::now();
 
-		std::vector<std::list<std::string>> currentSimulation;
 		for (int i = 0; i < k; i++) {
 			char startingChar = static_cast<char>('a' + game.nextInt(0, 25));
-			currentSimulation.push_back(run(file, startingChar, seed + i));
+			run(file, startingChar, seed + i);
 		}
 
 		std::chrono::steady_clock::duration elapsed = std::chrono::steady_clock::now() - t;
