@@ -3,9 +3,7 @@
 #include "Prototype.h"
 #include <string>
 #include <chrono>
-#include <random>
 #include <vector>
-#include <iostream>
 
 class Simulator
 {
@@ -36,14 +34,14 @@ public:
 	// runs k simulations of game and return a double counting the time to run the batch in seconds. 
 	// Results should be stored internally in a vector list of strings
 	double batch(std::string file, int k, int seed) {
-		
+		const int alphabetLength = 26;
 		Prototype game(file);
 		game.seed(seed);
 
 		std::chrono::steady_clock::time_point t = std::chrono::steady_clock::now();
 
 		for (int i = 0; i < k; i++) {
-			char startingChar = static_cast<char>('a' + game.nextInt(0, 25));
+			char startingChar = static_cast<char>('a' + game.nextInt(0, alphabetLength - 1));
 			run(file, startingChar, seed + i);
 		}
 
