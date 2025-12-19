@@ -22,12 +22,9 @@
 class Prototype {
 
 	//insert data structures here:
-	protected:
-		std::vector<std::string> cityNames;
-		std::unordered_set<std::string> usedCityNames;
-
-	private:
-		std::mt19937 random;
+	std::vector<std::string> cityNames;
+	std::unordered_set<std::string> usedCityNames;
+	std::mt19937 random;
 
 	public:
 	//insert methods here:
@@ -83,7 +80,7 @@ class Prototype {
 	// 
 	// Binary search on sorted vector and hash lookup on unordered
 
-	bool checkCity(std::string cityName) {
+	bool checkCity(const std::string& cityName) {
 		if (std::binary_search(cityNames.begin(), cityNames.end(), cityName)) {
 			return !usedCityNames.contains(cityName);
 		}
@@ -93,7 +90,7 @@ class Prototype {
 	// Accepts a city as a string and marks it as used. checkcity no longer accepts as valid.
 	//
 	// Same complexity as checkCity
-	void markUsed(std::string cityName) {
+	void markUsed(const std::string& cityName) {
 		if (checkCity(cityName)) {
 			usedCityNames.insert(cityName);
 		}
@@ -106,7 +103,7 @@ class Prototype {
 
 
 	// Allows a seed to be used that controls randomness in the game.
-	void seed(int gSeedInt) {
+	void seed(unsigned int gSeedInt) {
 		random.seed(gSeedInt);
 	}
 

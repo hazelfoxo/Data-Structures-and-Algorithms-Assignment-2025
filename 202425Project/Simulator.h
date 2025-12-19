@@ -11,7 +11,7 @@ class Simulator
 
 public:
 	// This makes the game prototype play against itself using the file and first character specified.
-	std::list<std::string> run(std::string file, char start, int seed) {
+	std::list<std::string> run(const std::string& file, char start, int seed) {
 		Prototype game(file);
 		game.seed(seed);
 		std::list<std::string> currentSimulation;
@@ -33,7 +33,7 @@ public:
 
 	// runs k simulations of game and return a double counting the time to run the batch in seconds. 
 	// Results should be stored internally in a vector list of strings
-	double batch(std::string file, int k, int seed) {
+	double batch(const std::string& file, int k, int seed) {
 		const int alphabetLength = 26;
 		Prototype game(file);
 		game.seed(seed);
@@ -47,7 +47,7 @@ public:
 
 		std::chrono::steady_clock::duration elapsed = std::chrono::steady_clock::now() - t;
 
-		return std::chrono::duration_cast<std::chrono::nanoseconds > (elapsed).count();
+		return static_cast<double> (std::chrono::duration_cast<std::chrono::nanoseconds > (elapsed).count());
 
 	}
 
