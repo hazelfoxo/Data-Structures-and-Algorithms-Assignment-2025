@@ -61,8 +61,7 @@ class Prototype {
 		std::vector<std::string> cityNamesSubset;
 
 		for (std::string& city : cityNames) {
-			if (!city.empty() && city[0] == letter && checkCity(city))
-			{
+			if (!city.empty() && city[0] == letter && checkCity(city)) {
 				cityNamesSubset.push_back(city);
 			}
 			if (city[0] > letter) break;
