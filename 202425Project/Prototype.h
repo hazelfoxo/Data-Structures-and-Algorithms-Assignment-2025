@@ -20,12 +20,16 @@
 */
 
 class Prototype {
-	//insert data structures here:
-	std::vector<std::string> cityNames;
-	std::unordered_set<std::string> usedCityNames;
-	std::mt19937 random;
 
-public:
+	//insert data structures here:
+	protected:
+		std::vector<std::string> cityNames;
+		std::unordered_set<std::string> usedCityNames;
+
+	private:
+		std::mt19937 random;
+
+	public:
 	//insert methods here:
 
 	// Constructor
