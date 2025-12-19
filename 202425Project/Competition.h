@@ -5,6 +5,9 @@
 
 class Competition : public Prototype
 {
+    public:
+        Competition(const std::string& fileName) : Prototype(fileName) {
 
+        }
 };
 
