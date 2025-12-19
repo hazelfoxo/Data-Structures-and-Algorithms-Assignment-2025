@@ -31,7 +31,7 @@ class Prototype {
 
 	// Constructor
 	// Accepts name of file as string, reads file and populates internal data structures.
-
+	//
 	// Sorts vector so we can use binary search later
 	Prototype(std::string fileName) {
 		cityNames = readFile(fileName);
@@ -55,7 +55,7 @@ class Prototype {
 	// Doesn't return used cities
 	// 
 	// Linear search on vector
-
+	//
 	// Optimise this: Remove linear search
 	std::string getCity(char letter) {
 		std::vector<std::string> cityNamesSubset;
