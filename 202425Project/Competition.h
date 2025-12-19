@@ -1,5 +1,6 @@
 #pragma once
 #include "Prototype.h"
+#include <string>
 
 #define Competition_class Competition			//change to Competition once you've implemented your Competition class, defaults to Prototype
 
